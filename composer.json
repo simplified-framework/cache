@@ -1,0 +1,16 @@
+{
+  "name": "simplified/cache",
+  "description": "Simplified cache module",
+  "license":"MIT",
+  "authors": [
+    {
+      "name": "Andreas Bratfisch",
+      "email": "duskman72@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Simplified\\Cache\\":"src/"
+    }
+  }
+}
