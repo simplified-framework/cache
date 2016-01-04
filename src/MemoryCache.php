@@ -35,10 +35,15 @@ class MemoryCache implements CacheContainerInterface {
     }
 
     public function set($key, $data) {
-        if (!apc_store(strtolower($key), $data)) {
-            throw new CacheException('Error saving data with the key ' . $key . ' to the APC cache.');
+        if (extension_loaded('apc')) {
+            if (!apc_store(strtolower($key), $data)) {
+                throw new CacheException('Error saving data with the key ' . $key . ' to the APC cache.');
+            }
+            return $this;
+        } else {
+            self::$cache[$key] = $data;
         }
-        return $this;
+
     }
 
     public function delete($key) {
